@@ -1,0 +1,39 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description:
+  Creates a KMS key
+
+Parameters:
+  KeyName:
+    Type: String
+    Default: alias/{{ key_name }}
+    Description: The name of the key.
+  CreatedBy:
+    Type: String
+    Default: {{ created_by }}
+    Description: Who created the resource.
+
+Resources:
+  Key:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: KMS key.
+      EnableKeyRotation: true
+      KeyPolicy: {{ key_policy }}
+      Tags:
+        - Key: Name
+          Value: !Ref KeyName
+        - Key: Name
+          Value: !Ref CreatedBy
+  Alias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Ref KeyName
+      TargetKeyId: !Ref Key
+
+Outputs:
+  KMSArn:
+    Description: The ARN of the KMS key
+    Value: !GetAtt Key.Arn
+

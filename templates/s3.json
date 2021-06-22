@@ -1,0 +1,34 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "S3 Bucket Template",
+  "Parameters" : {
+    "BucketName" : {
+      "Type" : "String",
+      "Description" : "Bucket Name"
+    }
+  },
+
+  "Rules" : {
+    set of rules
+  },
+
+  "Mappings" : {
+    set of mappings
+  },
+
+  "Conditions" : {
+    set of conditions
+  },
+
+  "Transform" : {
+    set of transforms
+  },
+
+  "Resources" : {
+    set of resources
+  },
+
+  "Outputs" : {
+    set of outputs
+  }
+}
